@@ -1,0 +1,29 @@
+version: "3.9"
+services:
+  postgres:
+    image: postgres:13.3
+    environment:
+      POSTGRES_DB: "images"
+      POSTGRES_USER: "imager"
+      POSTGRES_PASSWORD: "admin"
+    volumes:
+      - images-data:/var/lib/postgresql/data
+    ports:
+      - "5430:5432"
+
+  redis:
+      image: redis:latest
+      restart: always
+      ports:
+        - "6379:6379"
+      volumes:
+        - cache:/data
+      environment:
+        - REDIS_PASSWORD=my-password
+        - REDIS_PORT=6379
+        - REDIS_DATABASES=16
+
+volumes:
+  images-data:
+  cache:
+

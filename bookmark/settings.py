@@ -69,6 +69,7 @@ INSTALLED_APPS = [
     'easy_thumbnails',
     'actions.apps.ActionsConfig',
     'debug_toolbar',
+    'drf_spectacular'
 ]
 
 MIDDLEWARE = [
@@ -111,6 +112,11 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
+}
+
+REST_FRAMEWORK = {
+    # ВАШИ НАСТРОЙКИ
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
 }
 
 # Password validation
@@ -162,7 +168,7 @@ MEDIA_ROOT = BASE_DIR / 'media'  # локальный путь, где они н
 
 AUTHENTICATION_BACKENDS = {  # бэкенд аутентификации
     'django.contrib.auth.backends.ModelBackend',  # аутентификация пользователей по бд
-    'account.authentication.EmailAuthBackend',  # конкретно-прикладной бэкенд аутентификации по электронной почте
+    'account.authentication.EmailAuthBackend',  # конкретно-прикладной бэкенд аутентификации
 }
 
 # еще один способ указания URL адреса для моделей

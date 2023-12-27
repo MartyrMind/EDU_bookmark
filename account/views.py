@@ -101,7 +101,7 @@ def user_follow(request):
 
 @login_required
 def dashboard(request):
-    # по умолчанию показываем все действия пользователя
+    # по умолчанию показываем все действия
     actions = Action.objects.exclude(user=request.user)
     following_ids = request.user.following.values_list('id', flat=True)
 
